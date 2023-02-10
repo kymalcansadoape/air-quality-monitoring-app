@@ -57,11 +57,13 @@ import chart from "../components/chart.vue"
         </div>
     </section>
 
-    <section class="max-w-[1300px] w-full bg-white mt-10 mx-auto p-4 h-[330px]">
-        <chart class="w-full max-w-[700px]"/>
+    <section class="max-w-[1300px] w-full  mt-10 mx-auto h-[330px]">
+        <chart/>
     </section>
   </main>
 </template>
+
+
 
 
 
