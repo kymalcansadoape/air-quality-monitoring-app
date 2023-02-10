@@ -1,11 +1,37 @@
 <template>
     <nav class="text-[.9rem]">
         <ul class="flex justify-between items-center">
-            <li><button id="co2" class="active">Carbon Dioxide</button></li>
-            <li><button id="hum">Humidity</button></li>
-            <li><button id="methane">Methane</button></li>
-            <li><button id="cm">Carbon Monoxide</button></li>
-            <li><button id="lpg">LPG</button></li>
+            <li v-for="item in items" :key="item.path">
+                <button @click="navigateTo(item.path)" :id="item.chemicalId" :class="{active : isActive(item.path)}">{{ item.chemicalName }}</button>
+
+            </li>
         </ul>
     </nav>
 </template>
+
+<script>
+
+    export default{
+        data(){
+            return{
+                items:[
+                    {chemicalName: "Carbon Dioxide", chemicalId:"co2", path:'/'},
+                    {chemicalName: "Humidity", chemicalId:"hum", path:'/hum'},
+                    {chemicalName: "Methane", chemicalId:"methane", path:'/methane'},
+                    {chemicalName: "Carbon Monoxide", chemicalId:"cm", path:'/cm'},
+                    {chemicalName: "LPG", chemicalId:"lpg", path:'/lpg'},
+                ],
+                currentPath: '/'
+            }
+        },
+        methods: {
+            navigateTo(path){
+                this.currentPath = path
+            },
+            isActive(path){
+                return this.currentPath === path
+            }
+        }
+    }
+
+</script>
