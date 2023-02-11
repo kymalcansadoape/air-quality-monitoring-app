@@ -1,5 +1,6 @@
 <script setup>
 import chart from "../components/chart.vue"
+import alerts from "../components/alerts.vue"
 </script>
 
 <template>
@@ -57,8 +58,9 @@ import chart from "../components/chart.vue"
         </div>
     </section>
 
-    <section class="max-w-[1300px] w-full  mt-10 mx-auto h-[330px]">
+    <section class="max-w-[1300px] w-full  mt-10 mx-auto h-[365px] flex justify-between">
         <chart/>
+        <alerts/>
     </section>
   </main>
 </template>
