@@ -1,7 +1,9 @@
 <template>
-    <div class="bg-white h-full w-[550px] px-4 py-2 rounded overflow-y-scroll">
-        <p class="font-bold text-[17px] mb-3">Alerts</p>
-        <div class="gap-y-3 flex flex-col">
+    <div class="bg-white h-full w-[550px] px-4 py-2 relative flex flex-col rounded">
+        <div>
+            <p class="font-bold text-[17px] mb-3">Alerts</p>
+        </div>
+        <div class="gap-y-3 flex flex-col h-[300px] overflow-y-scroll">
             <div class="bg-slate-200 h-[80px] before:rounded-l-lg relative rounded text-[.9rem] before:block before:h-full before:w-[10px] before:content-[''] before:absolute before:bg-red-500">
                 <div class="h-full p-2 px-7">
                     <p class="text-[.8rem]">Today 9:30 AM</p>
