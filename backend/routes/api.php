@@ -1,7 +1,11 @@
 <?php
 
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Reading;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReadingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/latest', function(Request $request){
+    $latest = Reading::latest()->first();
+    return response()->json($latest);
+});
+Route::get('/last-seven-days', function(Request $request){
+    $sevenDaysAgo = Carbon::now()->subDays(7);
+    $readings = Reading::whereRaw('timestamp >= DATE_SUB(NOW(), INTERVAL 7 DAY)')->limit(7)->get();
+    return response()->json($readings);
 });
