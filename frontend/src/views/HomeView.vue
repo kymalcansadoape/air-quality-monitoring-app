@@ -36,7 +36,7 @@ onMounted(()=> getAllSensorData());
             </div>
             <div class="detections gap-3 grid grid-cols-3 h-[200px]" v-for="data in allData" :key="data.id">
                 <div class="bg-yellow-200 rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
-                    <p class="font-semibold">{{ data.co2 }}</p>
+                    <p class="font-semibold">{{ data.co2 }} PPM</p>
                     <p class="text-[.8rem]">Carbon Dioxide (CO2)</p>
                 </div>
                 <div class="bg-blue-200 rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
@@ -44,19 +44,19 @@ onMounted(()=> getAllSensorData());
                     <p class="text-[.8rem]">Humidity</p>
                 </div>
                 <div class="bg-red-200 rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
-                    <p class="font-semibold">{{ data.cm }}</p>
+                    <p class="font-semibold">{{ data.cm }} PPM</p>
                     <p class="text-[.8rem]">Carbon Monoxide</p>
                 </div>
                 <div class="bg-green-200 rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
-                    <p class="font-semibold">{{ data.meth }}</p>
+                    <p class="font-semibold">{{ data.meth }} PPM</p>
                     <p class="text-[.8rem]">Methane</p>
                 </div>
                 <div class="bg-violet-200 rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
-                    <p class="font-semibold">{{ data.lpg }}</p>
+                    <p class="font-semibold">{{ data.lpg }} PPM</p>
                     <p class="text-[.8rem]">LPG</p>
                 </div>
                 <div class="bg-yellow-200 rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
-                    <p class="font-semibold">{{ data.co2 }}</p>
+                    <p class="font-semibold">{{ data.co2 }} PPM</p>
                     <p class="text-[.8rem]">Carbon Dioxide (CO2)</p>
                 </div>
                 
