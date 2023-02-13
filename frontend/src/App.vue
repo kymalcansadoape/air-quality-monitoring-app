@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
+  <div id="preloader"></div>
   <header>
       <nav class="bg-white w-full px-[2em] py-[1em] ">
         <div class="w-full max-w-[1300px] flex justify-between mx-auto">
