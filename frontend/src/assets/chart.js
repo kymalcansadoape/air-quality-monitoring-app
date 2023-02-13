@@ -8,7 +8,7 @@ var dates = [];
   for (var i = 0; i < 7; i++) {
     dates.push(`Day ${i}`);
 }
-let chart_data
+let chart_data = [12,2,4,6,9,17,1]
 let label
 
 co2.onclick = ()=>{
