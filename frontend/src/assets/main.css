@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#preloader{
+  background: #fff url(../../public/preloader.gif) no-repeat center center;
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	z-index: 100;
+}
+
+.detections{
+  opacity: 0;
+  animation: fade 300ms linear 0s 1 forwards;
+}
+
+@Keyframes fade{
+  from {
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
+  }
+
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #98B1B9;
+}
+
+.active{
+  background-color: #fff;
+  padding: .6em 1.2em;
+  border-radius: 5px 5px 0 0;
+}
