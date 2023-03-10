@@ -2,7 +2,7 @@
     <nav class="text-[.9rem]">
         <ul class="flex justify-between items-center">
             <li v-for="item in items" :key="item.path " >
-                <button class="hover:bg-emerald-200 px-[1.2em] py-[.6em] rounded"  @click="navigateTo(item.path)" :id="item.chemicalId" :class="{active : isActive(item.path)}">{{ item.chemicalName }}</button>
+                <button class="hover:bg-slate-200 hover:text-black text-slate-200 px-[1.2em] py-[.6em] rounded"  @click="navigateTo(item.path)" :id="item.chemicalId" :class="{active : isActive(item.path)}">{{ item.chemicalName }}</button>
 
             </li>
         </ul>

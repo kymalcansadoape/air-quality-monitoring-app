@@ -5,7 +5,7 @@ let co2 = document.getElementById('co2'),
       cm = document.getElementById('cm'),
       lpg = document.getElementById('lpg')
 var dates = [];
-  for (var i = 0; i < 7; i++) {
+  for (var i = 1; i <= 7; i++) {
     dates.push(`Day ${i}`);
 }
 let chart_data = [12,2,4,6,9,17,1]
