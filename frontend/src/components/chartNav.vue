@@ -15,10 +15,10 @@
         data(){
             return{
                 items:[
-                    {chemicalName: "Carbon Dioxide", chemicalId:"co2", path:'/'},
-                    {chemicalName: "Humidity", chemicalId:"hum", path:'/hum'},
-                    {chemicalName: "Methane", chemicalId:"methane", path:'/methane'},
-                    {chemicalName: "Carbon Monoxide", chemicalId:"cm", path:'/cm'},
+                    {chemicalName: "Carbon Dioxide", chemicalId:"carbon", path:'/'},
+                    {chemicalName: "Humidity", chemicalId:"humi", path:'/hum'},
+                    {chemicalName: "Pressure", chemicalId:"pressure", path:'/pressure'},
+                    {chemicalName: "Temperature", chemicalId:"temp", path:'/temp'},
                     {chemicalName: "LPG", chemicalId:"lpg", path:'/lpg'},
                 ],
                 currentPath: '/'
