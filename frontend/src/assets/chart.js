@@ -1,46 +1,57 @@
 import Chart from "chart.js/auto";
-let co2 = document.getElementById('co2'),
-      hum = document.getElementById('hum'),
-      methane = document.getElementById('methane'),
-      cm = document.getElementById('cm'),
-      lpg = document.getElementById('lpg')
-var dates = [];
-  for (var i = 1; i <= 7; i++) {
-    dates.push(`Day ${i}`);
-}
-let chart_data = [12,2,4,6,9,17,1]
-let label
+import {
+  generateData, 
+  carbon_chart,
+  temperature_chart,
+  humidity_chart,
+  lpg_chart,
+  pressure_chart } from "./fetch"
+var dataPoints = [0];
+setInterval(fetchData,2000)
+export let chart_data = []
+let carbon = document.getElementById('carbon'),
+      humi = document.getElementById('humi'),
+      pressure = document.getElementById('pressure'),
+      temp = document.getElementById('temp'),
+      LpG = document.getElementById('lpg')
+let data_length = 9
 
-co2.onclick = ()=>{
-    chart_data = [12,2,4,6,9,17]
+let label
+window.addEventListener('load',()=>{
+  chart_data = carbon_chart
+  label = "C02"
+  updateData()
+})
+carbon.onclick = ()=>{
+    chart_data = carbon_chart
     label = "C02"
     updateData()
 }
-hum.onclick = ()=>{
-    chart_data = [5,2,6,8,1,3,7]
+humi.onclick = ()=>{
+    chart_data = humidity_chart
     label = "Humidity"
     updateData()
 }
-methane.onclick = ()=>{
-    chart_data = [2,5,2,8,3,9,1]
-    label = "Methane"
+pressure.onclick = ()=>{
+    chart_data = pressure_chart
+    label = "Pressure"
     updateData()
 }
-cm.onclick = ()=>{
-    chart_data = [1,4,8,3,9,3,8]
-    label = "Carbon Monoxide"
+temp.onclick = ()=>{
+    chart_data = temperature_chart
+    label = "Temperature"
     updateData()
 }
-lpg.onclick = ()=>{
-    chart_data = [1,2,8,3,8,4,8]
+LpG.onclick = ()=>{
+    chart_data = lpg_chart
     label = "LPG"
     updateData()
 }
 //setup
 const data = {
-      labels: dates,
+      labels: dataPoints,
       datasets: [{
-          label: "C02",
+          label: label,
           data: chart_data,
           backgroundColor: [
             "rgba(255,99,132,.7)",
@@ -64,7 +75,7 @@ const data = {
 
 //config
 const config = {
-  type: "bar",
+  type: "line",
     data,
     options: {
       scales: {
@@ -74,7 +85,7 @@ const config = {
       },
     },
 }
-const barChart = new Chart(
+const lineChart = new Chart(
     document.getElementById("thisChart").getContext('2d'),
     config
 )
@@ -82,9 +93,27 @@ const barChart = new Chart(
 function updateData(){
 
     for(var i = 0; i < chart_data.length; i++){
-        barChart.data.datasets[0].data[i] = chart_data[i]
+      lineChart.data.datasets[0].data[i] = chart_data[i]
     }
-    barChart.data.datasets[0].label = label
-    barChart.update();
+
+    lineChart.data.datasets[0].label = label
+
+    if(chart_data.length > data_length){
+      chart_data.shift()
+    }
+
+    const newNumber = dataPoints[dataPoints.length - 1] + 1
+    dataPoints.push(newNumber)
+    if(dataPoints.length > data_length){
+      dataPoints.shift()
+    }
+    lineChart.update();
+
+}
+
+function fetchData(){
+    generateData()
+    updateData()
+
 }
 

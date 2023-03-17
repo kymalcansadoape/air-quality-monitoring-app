@@ -13,15 +13,15 @@ import axios from 'axios'
                 <div class="mt-3 flex justify-between">
                     <div>             
                         <p>Device Name</p>
-                        <p>System Voltage</p>
+                        <p>Supply Voltage</p>
                         <p>Battery Alternator</p>
                         <p>Cylinder No.</p>
                         <p>Type</p>
                         <p>Intake Air Method</p>
                     </div>
                     <div>
-                        <p>: &nbsp&nbsp&nbspAQ Generator</p>
-                        <p>: &nbsp&nbsp&nbsp24 DCV</p>
+                        <p>: &nbsp&nbsp&nbspBME680</p>
+                        <p>: &nbsp&nbsp&nbsp3.6V</p>
                         <p>: &nbsp&nbsp&nbsp80 Amps</p>
                         <p>: &nbsp&nbsp&nbsp6</p>
                         <p>: &nbsp&nbsp&nbspIN-line</p>
@@ -35,24 +35,24 @@ import axios from 'axios'
                     <p class="text-[.8rem] text-[#78a58f]">Carbon Dioxide (CO2)</p>
                 </div>
                 <div class="bg-[#081535] rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
-                    <p class="font-semibold">{{ hum}} PPM</p>
+                    <p class="font-semibold">{{ hum}} %</p>
                     <p class="text-[.8rem] text-[#78a58f]">Humidity</p>
                 </div>
                 <div class="bg-[#081535] rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
-                    <p class="font-semibold">{{ cm}} PPM</p>
-                    <p class="text-[.8rem] text-[#78a58f]">Carbon Monoxide</p>
+                    <p class="font-semibold">{{ pressure}} hPa</p>
+                    <p class="text-[.8rem] text-[#78a58f]">Pressure</p>
                 </div>
                 <div class=" bg-[#081535] rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
-                    <p class="font-semibold">{{ meth }} PPM</p>
-                    <p class="text-[.8rem] text-[#78a58f]">Methane</p>
+                    <p class="font-semibold">{{ temperature }} °C</p>
+                    <p class="text-[.8rem] text-[#78a58f]">Temperature</p>
                 </div>
                 <div class="bg-[#081535] rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
                     <p class="font-semibold">{{ lpg}} PPM</p>
                     <p class="text-[.8rem] text-[#78a58f]">LPG</p>
                 </div>
                 <div class=" bg-[#081535] rounded flex flex-col px-6 justify-center items-center w-[230px] h-full">
-                    <p class="font-semibold">{{ co2 }} PPM</p>
-                    <p class="text-[.8rem] text-[#78a58f]">Carbon Dioxide (CO2)</p>
+                    <p class="font-semibold">{{ overall }} %</p>
+                    <p class="text-[.8rem] text-[#78a58f]">Air Quality</p>
                 </div>
                 
             </div>
@@ -74,8 +74,9 @@ export default {
             co2:"",
             hum:"",
             lpg:"",
-            meth:"",
-            cm: ""
+            temperature:"",
+            pressure: "",
+            overall: ""
         }
     },
     mounted() {
@@ -88,19 +89,21 @@ export default {
     methods: {
         // 192.168.43.239 - This is for "Test" hotspot
         fetchData(){
-            axios.get('http://127.0.0.1:8000/api/total')
+            axios.get('http://127.0.0.1:8000/api/latest')
              .then(response =>{
                 this.co2 = response.data.co2,
                 this.hum = response.data.hum,
-                this.cm = response.data.cm,
+                this.pressure = response.data.pressure,
                 this.lpg = response.data.lpg,
-                this.meth = response.data.meth
+                this.temperature = response.data.temperature
+                this.overall = response.data.overall
              })
              .catch(error=>{
                 console.log(error)
              })
         }
-    }
+    },
+   
 }
 
 

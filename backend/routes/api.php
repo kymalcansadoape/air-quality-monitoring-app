@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([], function() {
     Route::apiResource('sensor',SensorControl::class);
-    Route::get('total',[SensorControl::class,'sumOfAllData']);
+    Route::get('latest',[SensorControl::class,'latestRow']);
 });
 
 
