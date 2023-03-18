@@ -95,14 +95,14 @@ void loop() {
     sprintf(buffer,payload.c_str(),carbonDioxideData,humidityData,pressureData,temperatureData,lpgData,airQualityData);
     payload = buffer;
     int httpPostResponse = httpPost.POST(payload);        // This will return HTTP Status Code
+    String POSTresponse = httpPost.getString();           // Get the response that the backend threw
 
     // Compare to zero to output any status code
     if (httpPostResponse > 0) {
-      String POSTresponse = httpPost.getString();             // Get the response that the backend threw
       Serial.println("Status: " + httpPostResponse);          // Status Code here
-      Serial.println("POST_Response: " + POSTresponse);       // This will display the message from the backend if the data successfully inserted to the database
+      Serial.println("POST_Response: " + POSTresponse);       // This will display the message from the backend if the data successfully inserted into database
     } else {
-      Serial.println("POST_Response: " + POSTresponse); 
+      Serial.println("POST_Response: " + POSTresponse);       // This will display the message from the backend if the data failed to insert into database
     }     
     httpPost.end();                                           // Closing the proccess and loop back with the delay of 4 seconds
   }
