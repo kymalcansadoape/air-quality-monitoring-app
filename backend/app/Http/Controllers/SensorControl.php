@@ -15,15 +15,17 @@ class SensorControl extends Controller
     }
     public function store(Request $request){
         $data = new Sensor;
-        $data->co2 = $request->input("value1");
-        $data->hum = $request->input("value2");
-        $data->pressure = $request->input("value3");
-        $data->temperature = $request->input("value4");
-        $data->lpg = $request->input("value5");
-        $data->overall = $request->input("value6");
-        $data->save();
-        return response()->json(["Success"]);
-
+        $data->co2 = $request->input("carbonDioxideData");
+        $data->hum = $request->input("humidityData");
+        $data->pressure = $request->input("pressureData");
+        $data->temperature = $request->input("temperatureData");
+        $data->lpg = $request->input("lpgData");
+        $data->overall = $request->input("airQualityData");
+        if($data->save()){
+            return response()->json(["The data was inserted successfully!"]);
+        }else{
+            return response()->json(["Can't insert data to the database!"]);
+        }
     }
 
     public function latestRow(){
